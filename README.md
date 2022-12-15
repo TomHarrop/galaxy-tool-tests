@@ -6,6 +6,13 @@ The aim is to avoid planemo having to spin Galaxy up with every run.
 
 ## Status
 
+-[x] Container spins up a Galaxy instance
+-[x] Interface is accessible at http://localhost:8080
+-[x] Local wrappers can be installed by mounting the wrapper XML and a tool_conf.xml
+-[x] Changes to the wrapper are reflected in the running instance
+-[x] `planemo test` with the `--galaxy_url` argument triggers tests without spinning up a new instance
+-[ ] The 
+
 ## Instructions
 
 This is for testing tool wrappers locally.
