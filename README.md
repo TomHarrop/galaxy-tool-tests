@@ -33,11 +33,11 @@ It runs a server over plain http and the admin password is stored in the Dockerf
 sudo singularity instance start \
     --writable-tmpfs \
     docker://ghcr.io/tomharrop/galaxy-tool-tests:v0.0.2 \
-    galaxy-tool-test
+    galaxy-tool-tests
 
 sudo singularity run \
     --writable-tmpfs \
-    instance://galaxy-tool-test
+    instance://galaxy-tool-tests
 ```
 
 Now you can access Galaxy at http://localhost:8080.
@@ -52,7 +52,7 @@ The details can be overridden by setting the environment variables.
 
 ```bash
 sudo singularity instance stop \
-    galaxy-tool-test
+    galaxy-tool-tests
 ```
 
 ### Install local tool wrappers
@@ -72,13 +72,13 @@ sudo singularity instance start \
     -B "$(readlink -f local_tools)":/local_tools/ \
     -B "$(readlink -f tool_conf.xml)":/galaxy/server/config/tool_conf.xml.sample \
     docker://ghcr.io/tomharrop/galaxy-tool-tests:v0.0.2 \
-    galaxy-tool-test
+    galaxy-tool-tests
 
 sudo singularity run \
     -B ${PWD},${TMPDIR} \
     -H $(mktemp -d) \
     --containall --cleanenv --writable-tmpfs \
-    instance://galaxy-tool-test
+    instance://galaxy-tool-tests
 ```
 
 Now you have Galaxy running with the wrapper in local_tools installed.
@@ -88,7 +88,7 @@ Changes to the wrapper and to job_conf.xml are reflected if you refresh the inte
 
 ```bash
 sudo singularity exec \
-    instance://galaxy-tool-test \
+    instance://galaxy-tool-tests \
     planemo test \
     --galaxy_url http://localhost:8080 \
     --galaxy_admin_key fakekey \
