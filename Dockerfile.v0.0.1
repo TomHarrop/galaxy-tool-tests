@@ -1,0 +1,20 @@
+FROM galaxy/galaxy-min:22.05
+
+LABEL SOFTWARE_NAME "galaxy-tool-tests"
+LABEL MAINTAINER "Tom Harrop"
+LABEL VERSION "v0.0.1"
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV LC_ALL=C
+ENV GALAXY_CONFIG_ADMIN_USERS=testing@gmail.com
+ENV GALAXY_CONFIG_MASTER_API_KEY=fakekey
+
+
+RUN     apt-get clean && \
+        rm -r /var/lib/apt/lists/* && \
+        apt-get update && apt-get upgrade -y --fix-missing
+
+RUN     python3 -m pip install --upgrade pip setuptools wheel && \
+        python3 -m pip install planemo
+
+ENTRYPOINT ["/galaxy/server/run.sh"]
