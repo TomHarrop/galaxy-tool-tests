@@ -23,6 +23,7 @@ It runs a server over plain http and the admin password is stored in the Dockerf
 
 
 **TODO**:
+
 :   Add Docker instructions
 
 ### Spin up the instance
@@ -42,6 +43,7 @@ To install tools, create an account with the email specified in the Dockerfile.
 The details can be overridden by setting the environment variables.
 
 **TODO**:
+
 :   Make this run when the instance starts, like Singularity's `runscript`
 
 
