@@ -1,0 +1,25 @@
+<macros>
+    <token name="@TOOL_VERSION@">2.1.1</token>
+    <token name="@VERSION_SUFFIX@">0</token>
+    <token name="@PROFILE@">20.09</token>
+    <token name="@DIGEST@">fe32f3a412087d79c3c406c112c37b20f0f9a4abcb0a15f2ec9b290eb44000fd</token>
+    <xml name="requirements">
+        <requirements>
+            <!-- Cactus is not in bioconda -->
+            <!-- Devoper provides a Docker container -->
+            <container type="docker">quay.io/comparative-genomics-toolkit/cactus@sha256:@DIGEST@</container>
+        </requirements>
+    </xml>
+    <xml name="citations">
+        <citations>
+            <citation type="doi">
+                https://doi.org/10.1038/s41586-020-2871-y
+            </citation>
+        </citations>
+    </xml>
+    <xml name="xrefs">
+        <xrefs>
+            <xref type="bio.tools">cactus</xref>
+        </xrefs>
+    </xml>
+</macros>
