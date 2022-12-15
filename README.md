@@ -8,6 +8,7 @@ The aim is to avoid planemo having to spin Galaxy up with every run.
 
 - [x] Container spins up a Galaxy instance
 - [x] Interface is accessible at http://localhost:8080
+- [x] You can create a login with the test account for admin access to the GUI
 - [x] Local wrappers can be installed by mounting the wrapper XML and a tool_conf.xml
 - [x] Changes to the wrapper are reflected in the running instance
 - [x] `planemo test` with the `--galaxy_url` argument triggers tests without spinning up a new instance
@@ -24,9 +25,7 @@ This is for testing tool wrappers locally.
 It runs a server over plain http and the admin password is stored in the Dockerfile.
 
 
-**TODO**:
-
-:   Add Docker instructions
+**TODO**: Add Docker instructions
 
 ### Spin up the instance
 
@@ -46,10 +45,7 @@ Now you can access Galaxy at http://localhost:8080.
 To install tools, create an account with the email specified in the Dockerfile.
 The details can be overridden by setting the environment variables.
 
-**TODO**:
-
-:   Make this run when the instance starts, like Singularity's `runscript`
-:   Right now this can be done by building the image from `galaxy-tool-test.Singularity`
+**TODO**: Make this run when the instance starts, like Singularity's `runscript`. Right now this can be done by building the image from `galaxy-tool-test.Singularity`
 
 
 ### Stop the instance
