@@ -42,11 +42,10 @@ sudo singularity run \
 
 Now you can access Galaxy at http://localhost:8080.
 
-To install tools, create an account with the email specified in the Dockerfile.
-The details can be overridden by setting the environment variables.
-
 **TODO**: Make this run when the instance starts, like Singularity's `runscript`. Right now this can be done by building the image from `galaxy-tool-test.Singularity`
 
+If you want to install toolshed tools, create an account with the admin email specified in the Dockerfile.
+(Those details can be overridden by setting the environment variables.)
 
 ### Stop the instance
 
