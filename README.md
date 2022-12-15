@@ -49,6 +49,7 @@ The details can be overridden by setting the environment variables.
 **TODO**:
 
 :   Make this run when the instance starts, like Singularity's `runscript`
+:   Right now this can be done by building the image from `galaxy-tool-test.Singularity`
 
 
 ### Stop the instance
@@ -61,6 +62,9 @@ sudo singularity instance stop \
 ### Install local tool wrappers
 
 This just requires some extra arguments to the run command to mount the local files into the container.
+
+I'm demonstrating this with a wrapper at `local_tools/cactus/cactus_cactus.xml`.
+You can add other tools to `job_conf.xml`.
 
 Make sure you don't already have the instance up before running the following commands.
 
@@ -81,7 +85,7 @@ sudo singularity run \
     instance://galaxy-tool-test
 ```
 
-Now you should have Galaxy running with the wrapper in local_tools installed.
+Now you have Galaxy running with the wrapper in local_tools installed.
 Changes to the wrapper and to job_conf.xml are reflected if you refresh the interface in your browser.
 
 ### Trigger a test with `planemo`
