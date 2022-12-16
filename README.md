@@ -12,9 +12,9 @@ The aim is to avoid planemo having to spin Galaxy up with every run.
 - [x] Local wrappers can be installed by mounting the wrapper XML and a tool_conf.xml
 - [x] Changes to the wrapper are reflected in the running instance
 - [x] `planemo test` with the `--galaxy_url` argument triggers tests without spinning up a new instance
-- [x] The Galaxy instance has to be configured to resolve dependencies
-- [x] Add conda autoinstall to the container build to speed up first run
-- [ ] Configure `galaxy.yml` during the build
+- [x] The Galaxy instance is configured to resolve dependencies with Conda
+- [x] Conda autoinstall runs during container build to speed up first run
+- [x] `config/galaxy.yml` is used to configure Galaxy in the container
 - [ ] Work out how to run the instance without `sudo`
 - [ ] Add equivalent Docker commands
 - [ ] Add data managers
@@ -102,12 +102,12 @@ It runs straight away with no spin up time!
 cactus_cactus (Test #1): failed
 cactus_cactus (Test #2): failed
 cactus_cactus (Test #3): failed
-cactus_cactus (Test #4): failed
+cactus_cactus (Test #4): passed
 
-real    0m1.181s
-user    0m0.001s
-sys 0m0.004s
+real    0m44.792s
+user    0m0.020s
+sys 0m0.010s
 ```
 
-Right now the tests are failing with `command not found`, because there is no dependency resolution configured.
+Some of the cactus tests are failing with `command not found` because cactus doesn't run on Conda.
 
