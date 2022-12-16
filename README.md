@@ -12,7 +12,8 @@ The aim is to avoid planemo having to spin Galaxy up with every run.
 - [x] Local wrappers can be installed by mounting the wrapper XML and a tool_conf.xml
 - [x] Changes to the wrapper are reflected in the running instance
 - [x] `planemo test` with the `--galaxy_url` argument triggers tests without spinning up a new instance
-- [ ] The Galaxy instance has to be configured to resolve dependencies
+- [x] The Galaxy instance has to be configured to resolve dependencies
+- [x] Add conda autoinstall to the container build to speed up first run
 - [ ] Configure `galaxy.yml` during the build
 - [ ] Work out how to run the instance without `sudo`
 - [ ] Add equivalent Docker commands
@@ -32,7 +33,7 @@ It runs a server over plain http and the admin password is stored in the Dockerf
 ```bash
 sudo singularity instance start \
     --writable-tmpfs \
-    docker://ghcr.io/tomharrop/galaxy-tool-tests:v0.0.2 \
+    docker://ghcr.io/tomharrop/galaxy-tool-tests:v0.0.3 \
     galaxy-tool-tests
 
 sudo singularity run \
@@ -68,9 +69,9 @@ sudo singularity instance start \
     -B ${PWD},${TMPDIR} \
     -H $(mktemp -d) \
     --containall --cleanenv --writable-tmpfs \
+    -B "$(readlink -f config/tool_conf.xml)":/galaxy/server/config/tool_conf.xml \
     -B "$(readlink -f local_tools)":/local_tools/ \
-    -B "$(readlink -f tool_conf.xml)":/galaxy/server/config/tool_conf.xml.sample \
-    docker://ghcr.io/tomharrop/galaxy-tool-tests:v0.0.2 \
+    docker://ghcr.io/tomharrop/galaxy-tool-tests:v0.0.3 \
     galaxy-tool-tests
 
 sudo singularity run \
