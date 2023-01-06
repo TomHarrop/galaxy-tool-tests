@@ -93,21 +93,29 @@ sudo singularity exec \
     --galaxy_url http://localhost:8080 \
     --galaxy_admin_key fakekey \
     --galaxy_root /galaxy/server \
-    /local_tools/cactus/cactus_cactus.xml
+    /local_tools/test_tool/galaxytooltests_testtool.xml
 ```
 
 It runs straight away with no spin up time!
 
 ```bash
-cactus_cactus (Test #1): failed
-cactus_cactus (Test #2): failed
-cactus_cactus (Test #3): failed
-cactus_cactus (Test #4): passed
+All 1 test(s) executed passed.
+galaxytooltests_testtool (Test #1): passed
 
-real    0m44.792s
-user    0m0.020s
-sys 0m0.010s
+real    0m8.362s
+user    0m0.002s
+sys 0m0.004s
 ```
 
-Some of the cactus tests are failing with `command not found` because cactus doesn't run on Conda.
+Running planemo test on the same tool wrapper takes longer.
 
+```bash
+planemo test galaxytooltests_testtool.xml
+
+All 1 test(s) executed passed.
+galaxytooltests_testtool (Test #1): passed
+
+real    0m29.709s
+user    0m6.060s
+sys 0m2.373s
+```
