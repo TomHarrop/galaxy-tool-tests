@@ -1,0 +1,28 @@
+<tool id="galaxytooltests_testtool" name="galaxy-tool-tests test tool:" version="@TOOL_VERSION@+galaxy@VERSION_SUFFIX@" profile="@PROFILE@">
+    <description>a basic tool to test tests.</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <expand macro="xrefs"/>
+    <expand macro="requirements"/>
+    <command detect_errors="exit_code"><![CDATA[
+        cp '$input' '$output'
+    ]]></command>
+    <inputs>
+        <param name="input" type="data" format="txt" label="Input file" help="Any file is fine" />
+    </inputs>
+    <outputs>
+        <data name="output" format="txt" label="${tool.name} on ${on_string}" >
+        </data>
+    </outputs>
+    <tests>
+        <test>
+            <param name="input" value="input.txt" />
+            <output name="output" file="output.txt" />
+        </test>
+    </tests>
+    <help><![CDATA[
+Copies the input file to the output file.
+]]></help>
+    <expand macro="citations"/>
+</tool>
