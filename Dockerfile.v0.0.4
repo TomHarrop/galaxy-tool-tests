@@ -1,0 +1,23 @@
+FROM    galaxy/galaxy-min:23.0.4
+
+LABEL   SOFTWARE_NAME "galaxy-tool-tests"
+LABEL   MAINTAINER "Tom Harrop"
+LABEL   VERSION "v0.0.4"
+
+ENV     DEBIAN_FRONTEND=noninteractive
+ENV     LC_ALL=C
+ENV     GALAXY_CONFIG_ADMIN_USERS=testing@gmail.com
+ENV     GALAXY_CONFIG_MASTER_API_KEY=fakekey
+
+RUN     python3 -m pip install --upgrade pip setuptools wheel && \
+        python3 -m pip install planemo
+
+ADD     config/galaxy.yml /galaxy/server/config/galaxy.yml
+
+WORKDIR /galaxy/server
+
+RUN     python /galaxy/server/scripts/manage_tool_dependencies.py init_if_needed
+
+EXPOSE  8080
+
+CMD     ["/galaxy/server/run.sh"]
