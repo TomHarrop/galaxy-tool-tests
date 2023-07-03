@@ -14,6 +14,9 @@ RUN     python3 -m pip install --upgrade pip setuptools wheel && \
 
 ADD     config/galaxy.yml /galaxy/server/config/galaxy.yml
 
+        # don't know why this is needed for 23.0.4
+RUN     mkdir -p /galaxy/server/database/dependencies
+
 WORKDIR /galaxy/server
 
 RUN     python /galaxy/server/scripts/manage_tool_dependencies.py init_if_needed
